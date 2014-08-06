@@ -1,0 +1,8 @@
+---
+
+options:
+  script: 'server/bin/www'
+dev: {}
+fg:
+  options:
+    background: false

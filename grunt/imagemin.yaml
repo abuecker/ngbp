@@ -1,0 +1,7 @@
+compile:
+    files:
+        - expand: true
+          cwd: '<%= build_dir %>/'
+          src:
+              - 'assets/**/*.{png,jpg,gif}'
+          dest: '<%= compile_dir %>/'

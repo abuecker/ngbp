@@ -1,0 +1,78 @@
+default:
+  - 'build'
+  - 'compile'
+
+#
+# In order to make it safe to just compile or copy *only* what was changed, we
+# need to ensure we are starting from a clean, fresh build. So we rename the
+# `watch` task to `delta` (that's why the configuration var above is `delta`)
+# and then add a new task called `watch` that does a clean build before
+# watching for changes.
+#
+# Note: string assignment here, instead of a list assignment, is a renameTask.
+#
+delta: 'watch'
+
+watch:
+  - 'env:build'
+  - 'build'
+  # - 'karmaconfig'
+  # - 'karma:unit'
+  - 'express:dev'
+  - 'delta'
+
+serve:
+  - 'build'
+  - 'compile'
+  - 'shell:serve'
+
+build:
+  - 'clean:build'
+  - 'html2js'
+  - 'jshint'
+  - 'less:build'
+  - 'concat:build_css'
+  - 'copy:build_app_assets'
+  - 'copy:build_vendor_assets'
+  - 'copy:build_appjs'
+  - 'copy:build_vendorjs'
+  - 'copy:build_vendorcss'
+  - 'copy:build_misc'
+  - 'index:build'
+  # - 'karmaconfig'
+  # - 'karma:continuous'
+
+build_simple:
+  - 'clean:build'
+  - 'html2js'
+  - 'jshint'
+  - 'less:build'
+  - 'concat:build_css'
+  - 'copy:build_app_assets'
+  - 'copy:build_vendor_assets'
+  - 'copy:build_appjs'
+  - 'copy:build_vendorjs'
+  - 'index:build'
+
+compile:
+  - 'less:compile'
+  - 'copy:compile_assets'
+  - 'copy:compile_misc'
+  - 'concat:angular' # temp step for now with the current code layout.
+  - 'ngmin:temp'     # temp step for now with the current code layout.
+  - 'concat:compile_js'
+  - 'removelogging:dist'
+  - 'uglify'
+  - 'imagemin:compile'
+  - 'index:compile'
+  - 'compress:production'
+
+e2e:
+  - 'express:dev'
+  - 'build_simple'
+  - 'webdriver:bg'
+  - 'protractorconfig'
+  - 'protractor'
+  - 'webdriver:stop'
+
+# vim: ts=2 sw=2 expandtab:

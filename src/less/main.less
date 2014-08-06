@@ -1,0 +1,21 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+// reset the css
+@import 'reset.less';
+@import (less) '../../vendor/html5-boilerplate/css/main.css';
+@import (less) '../../vendor/html5-boilerplate/css/normalize.css';
+
+// setup font awesome
+@import '../../vendor/fontawesome/less/font-awesome.less';
+@fa-font-path: "./fonts";
+
+// bring in the global variables
+@import 'variables.less';
+
+// import the app styles
+@import '../app/home/home.less';
+

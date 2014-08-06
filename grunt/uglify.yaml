@@ -1,0 +1,19 @@
+#
+# Minify the sources!
+#
+
+---
+
+options:
+  banner: '<%= meta.banner %>'
+  mangle: false # see: https://github.com/ngbp/ngbp/issues/200
+  compress: true
+  report: 'min'
+  preserveComments: 'some'
+  # mangle:
+  #   except:
+  #     - angular
+  #     - Angular
+default:
+  files:
+    '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'

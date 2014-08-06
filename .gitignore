@@ -1,0 +1,11 @@
+.bundle/
+.sass-cache/
+gems/
+vendor/
+node_modules/
+npm-debug.log
+*.sw*
+*~
+build/
+bin/
+*.tar.gz

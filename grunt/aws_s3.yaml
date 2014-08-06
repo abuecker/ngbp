@@ -1,0 +1,29 @@
+options:
+    accessKeyId: '<%= aws.ab.key %>'
+    secretAccessKey: '<%= aws.ab.secret %>'
+    uploadConcurrency: 2
+    downloadConcurrency: 2
+
+beta:
+    options:
+        bucket: 'brainquake-love'
+        differential: true
+        mime:
+            VERSION: 'text/plain'
+    files:
+         - expand: true
+           cwd: 'bin/'
+           src:
+             - '**/*'
+           dest: ''
+release:
+    options:
+        bucket: 'brainquake-love'
+        differential: true
+        mime:
+            VERSION: 'text/plain'
+    files:
+         - expand: true
+           src:
+             - '*.tar.gz'
+           dest: 'releases/'

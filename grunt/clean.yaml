@@ -1,0 +1,15 @@
+#
+# The directories to delete when `grunt clean` is executed.
+#
+# vim: set ts=2 sw=2 expandtab
+
+---
+
+build:
+  - '<%= build_dir %>'
+  - '<%= compile_dir %>'
+
+all:
+  - 'node_modules'
+  - 'vendor'
+

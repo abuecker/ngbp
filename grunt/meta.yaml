@@ -1,0 +1,14 @@
+#
+# The banner is the comment that is placed at the top of our compiled
+# source files. It is first processed as a Grunt template, where the `<%=`
+# pairs are evaluated based on this very configuration object.
+#
+banner: |
+     /**
+     * <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>
+     * <%= pkg.homepage %>
+     *
+     * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>
+     * Licensed <%= pkg.licenses.type %> <<%= pkg.licenses.url %>>
+     */
+

@@ -1,0 +1,13 @@
+production:
+    options:
+        mode: tgz
+        level: 9
+        pretty: true
+        archive: "<%= pkg.name %>-<%= pkg.version %>.tar.gz"
+    files:
+        - expand: true
+          cwd: '<%= compile_dir %>/'
+          src:
+              - "**/*"
+          dest: "<%= pkg.name %>/"
+

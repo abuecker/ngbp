@@ -1,0 +1,6 @@
+---
+
+command: 'server/bin/www'
+options:
+  env:
+    DEBUG: 'server'

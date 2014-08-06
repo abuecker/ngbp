@@ -1,0 +1,41 @@
+#
+# `grunt concat` concatenates multiple source files into a single file.
+#
+
+---
+
+#
+# The `build_css` target concatenates compiled CSS and vendor CSS
+# together.
+#
+build_css:
+  src:
+    - '<%= vendor_files.css %>'
+    - '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+  dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css'
+
+#
+# Since we are munging ngbp and the actions web together, it doesn't
+# follow the strict angular module paradigms, and ngmin doesn't work.
+# Let's create an interim file that does work.
+#
+angular:
+  src:
+    - '<%= build_dir %>/src/**/*.js'
+  dest: '/tmp/<%= pkg.name %>.angular.js'
+
+#
+# The `compile_js` target is the concatenation of our application source
+# code and all specified vendor source code into a single file.
+#
+compile_js:
+  options:
+    banner: "<%= meta.banner %>\n"
+  src:
+    - '<%= vendor_files.js %>'
+    - 'module.prefix'
+    - '<%= concat.angular.dest %>'
+    - '<%= html2js.app.dest %>'
+    - '<%= html2js.common.dest %>'
+    - 'module.suffix'
+  dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
