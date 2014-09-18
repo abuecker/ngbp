@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="ngbp" ng-controller="HomeCtrl">
+<html ng-app="ngbp">
   <head>
     <title ng-bind="pageTitle"></title>
 
@@ -27,8 +27,9 @@
   </head>
   <body>
 
-      <h1>NgBp</h1>
-
+      <div ng-controller="HomeCtrl as home">
+          <h1 id='name'>{{ home._name }}</h1>
+      </div>
 
   </body>
 

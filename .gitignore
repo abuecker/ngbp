@@ -1,7 +1,3 @@
-.bundle/
-.sass-cache/
-gems/
-vendor/
 node_modules/
 npm-debug.log
 *.sw*
@@ -9,3 +5,5 @@ npm-debug.log
 build/
 bin/
 *.tar.gz
+phantomjsdriver.log
+vendor

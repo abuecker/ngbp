@@ -40,8 +40,8 @@ jssrc:
     - '<%= app_files.js %>'
   tasks:
     - 'jshint:src'
-    # - 'karma:unit:run'
-    - 'copy:build_appjs'
+    - 'traceur:build'
+    - 'karma:unit:run'
 
 #
 # When assets are changed, copy them. Note that this will *not* copy new
@@ -82,7 +82,8 @@ jsunit:
     - '<%= app_files.jsunit %>'
   tasks:
     - 'jshint:test'
-    # - 'karma:unit:run'
+    - 'traceur:build'
+    - 'karma:unit:run'
   options:
     livereload: false
 

@@ -27,7 +27,13 @@ module.exports = {
         '!src/**/*.e2e.js',
     ],
 
+    es5js: [
+        '<%= build_dir %>/src/**/*.js',
+    ],
+
     jsunit: [
+        // 'src/**/*.spec.js',
+        '<%= build_dir %>/src/**/*.js',
         'src/**/*.spec.js',
     ],
 
@@ -51,6 +57,7 @@ module.exports = {
    */
   test_files: {
     js: [
+        'vendor/angular-mocks/angular-mocks.js',
     ]
   },
 
@@ -74,7 +81,8 @@ module.exports = {
    */
   vendor_files: {
     js: [
-        'vendor/angular/angular.js'
+        'vendor/traceur-runtime/traceur-runtime.js',
+        'vendor/angular/angular.js',
     ],
     css: [
     ],

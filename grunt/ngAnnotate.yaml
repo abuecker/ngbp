@@ -1,0 +1,23 @@
+#
+# `ng-min` annotates the sources before minifying. That is, it allows us
+# to code without the array syntax.
+#
+
+---
+
+#
+# minify the temp file
+#
+temp:
+  src: '<%= concat.angular.dest %>'
+  dest: '<%= concat.angular.dest %>'
+
+#
+# depricated for now until we organiaze the angular a bit differently
+#
+compile:
+  files:
+    - src: [ '<%= app_files.js %>' ]
+      cwd: '<%= build_dir %>'
+      dest: '<%= build_dir %>'
+      expand: true

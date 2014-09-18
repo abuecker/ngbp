@@ -42,10 +42,11 @@ module.exports = function (grunt, options) {
         '<%= html2js.app.dest %>',
         '<%= html2js.common.dest %>',
         '<%= test_files.js %>',
-        '<%= app_files.js %>',
+        '<%= app_files.es5js %>',
         '<%= app_files.jsunit %>',
       ]
     }
+
   };
 
 };

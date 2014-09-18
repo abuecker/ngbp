@@ -8,12 +8,12 @@
     "-W097": true, // same as above
     "browser": true,
     "sub": true,
+    "esnext": true,
     "predef": [
         "require",
         "angular",
         "module",
         "moment",
-        "_",
         "describe",
         "beforeEach",
         "expect",
