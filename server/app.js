@@ -1,11 +1,11 @@
 var express      = require('express');
 var path         = require('path');
-var favicon      = require('static-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
 var fs           = require('fs');
+var favicon      = require('serve-favicon');
 
 var app = express();
 
@@ -13,7 +13,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(favicon());
+app.use(favicon(__dirname + '/../src/favicon.ico'));
 // turn on the logging middleware if we're in debug mode
 if (process.env.DEBUG) {
     app.use(logger('dev'));
@@ -21,7 +21,11 @@ if (process.env.DEBUG) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({ secret: 'super secret session' }));
+app.use(session({
+    secret: 'super secret session',
+    resave: true,
+    saveUninitialized: true,
+}));
 var staticPath = path.join(__dirname, '..', 'build');
 if (process.env.DEBUG && process.env.DEBUG === 'prod') {
     staticPath = path.join(__dirname, '..', 'bin');

@@ -1,7 +1,13 @@
-var app = angular.module('home', []);
+angular.module('home', [])
+    .controller('HomeCtrl', HomeCtrl);
 
-app.controller('HomeCtrl', function ($scope, $location, $window) {
+function HomeCtrl ($scope) {
 
     console.log('Home Controller');
 
-});
+    this._name = 'Home';
+
+}
+
+class Blah {
+}
