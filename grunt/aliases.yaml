@@ -16,8 +16,8 @@ delta: 'watch'
 watch:
   - 'env:build'
   - 'build'
-  # - 'karmaconfig'
-  # - 'karma:unit'
+  - 'karmaconfig'
+  - 'karma:unit'
   - 'express:dev'
   - 'delta'
 
@@ -34,32 +34,19 @@ build:
   - 'concat:build_css'
   - 'copy:build_app_assets'
   - 'copy:build_vendor_assets'
-  - 'copy:build_appjs'
+  - 'traceur:build'
   - 'copy:build_vendorjs'
   - 'copy:build_vendorcss'
   - 'copy:build_misc'
   - 'index:build'
-  # - 'karmaconfig'
-  # - 'karma:continuous'
-
-build_simple:
-  - 'clean:build'
-  - 'html2js'
-  - 'jshint'
-  - 'less:build'
-  - 'concat:build_css'
-  - 'copy:build_app_assets'
-  - 'copy:build_vendor_assets'
-  - 'copy:build_appjs'
-  - 'copy:build_vendorjs'
-  - 'index:build'
+  - 'karmaconfig'
+  - 'karma:continuous'
 
 compile:
   - 'less:compile'
   - 'copy:compile_assets'
   - 'copy:compile_misc'
-  - 'concat:angular' # temp step for now with the current code layout.
-  - 'ngmin:temp'     # temp step for now with the current code layout.
+  - 'ngAnnotate:compile'
   - 'concat:compile_js'
   - 'removelogging:dist'
   - 'uglify'
@@ -67,12 +54,46 @@ compile:
   - 'index:compile'
   - 'compress:production'
 
-e2e:
+'e2e:setup':
+  - 'clean:screenshots'
   - 'express:dev'
-  - 'build_simple'
+  - 'build'
   - 'webdriver:bg'
-  - 'protractorconfig'
-  - 'protractor'
+
+'e2e:teardown':
   - 'webdriver:stop'
+
+'e2e:phantom':
+  - 'e2e:setup'
+  - 'protractor:phantom'
+  - 'e2e:teardown'
+
+'e2e:chrome':
+  - 'e2e:setup'
+  - 'protractor:chrome'
+  - 'e2e:teardown'
+
+'e2e:sauce':
+  - 'e2e:setup'
+  - 'protractor:sauce'
+  - 'e2e:teardown'
+
+'e2e:firefox':
+  - 'e2e:setup'
+  - 'protractor:firefox'
+  - 'e2e:teardown'
+
+'e2e:local':
+  - 'e2e:setup'
+  - 'protractor:local'
+  - 'e2e:teardown'
+
+'e2e:travis':
+  - 'build'
+  - 'compile'
+  - 'e2e'
+
+e2e:
+  - 'e2e:chrome'
 
 # vim: ts=2 sw=2 expandtab:

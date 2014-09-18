@@ -13,3 +13,5 @@ all:
   - 'node_modules'
   - 'vendor'
 
+screenshots:
+  - '.screenshots'
